@@ -1,29 +1,39 @@
 <template>
-  <div>
+  <div style="margin: 60px auto; width: max-content">
     <div>
       <nuxt-link to="/dashboard">Dashboard</nuxt-link>
     </div>
     <div>
       <h1>Login using nuxt-auth!</h1>
-      <button @click="login">Login</button>
+      <div
+        style="width: 360px; display: flex; flex-direction: column; gap: 15px"
+      >
+        <input v-model="username" />
+        <input v-model="password" type="password" />
+        <button style="width: 150px; margin: 0 auto" @click="login">
+          Login
+        </button>
+      </div>
     </div>
-    <!-- <div>
-      <h1>Login using custom functionality!</h1>
-      <button @click="$router.push('/dashboard')">Login</button>
-    </div> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "IndexPage",
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
   methods: {
     async login() {
       try {
         await this.$auth.loginWith("cookie", {
           data: {
-            username: "<>",
-            password: "<>",
+            username: this.username,
+            password: this.password,
           },
         });
         // this.$store.dispatch("login");
