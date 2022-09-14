@@ -50,7 +50,7 @@ export default {
       cookie: {
         cookie: {
           // (optional) If set, we check this cookie existence for loggedIn check
-          name: "user_token",
+          name: "is_user_logged_in",
         },
         endpoints: {
           login: {
