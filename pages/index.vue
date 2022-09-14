@@ -30,6 +30,7 @@ export default {
   methods: {
     async login() {
       try {
+        if (!this.username || !this.password) return;
         await this.$auth.loginWith("cookie", {
           data: {
             username: this.username,

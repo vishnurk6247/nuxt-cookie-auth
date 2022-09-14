@@ -43,13 +43,14 @@ export default {
   auth: {
     redirect: {
       login: "/",
+      logout: "/",
     },
     strategies: {
       local: false,
       cookie: {
         cookie: {
           // (optional) If set, we check this cookie existence for loggedIn check
-          name: "token",
+          name: "user_token",
         },
         endpoints: {
           login: {
@@ -57,7 +58,10 @@ export default {
             method: "post",
             // withCredentials: true,
           },
-          logout: false,
+          logout: {
+            url: `https://be-portal-test.herokuapp.com/api/auth/v1/logout`,
+            method: "post",
+          },
           user: false,
         },
       },
